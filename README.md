@@ -1,81 +1,58 @@
-
-# Automated Warehouse Robot Project
-
-## 1. Introduction
+## Task Overview
 This project proposes the design and algorithm of a robot that automates a food storage warehouse, minimizing human intervention.  
 The system focuses on **task scheduling, navigation, and material handling** within defined operational zones.
 
----
-
-## 2. Execution Algorithm (Pseudocode)
-
-```pseudo
-Start
-  Initialize robot sensors and navigation system
-  Load warehouse map and define working area
-  Define working envelope, operation envelope, and dead zones
-
-  While warehouse is active:
-      Receive storage or retrieval requests
-      Check task priority and scheduling
-      Plan optimal path avoiding dead zones
-      Move to target shelf or location
-      Pick or place food item
-      Update inventory database
-      Return to standby zone
-End
 
 
----
+## Algorithm
+1.	**Define the Working Area :** <br>
+    •	Determine warehouse dimensions (length × width × height)<br>
+	•	Create a detailed map of shelves, aisles, and loading/unloading zones
+  	
+2.	**Define the Working Envelope :** <br> 
+	•	The working envelope is the area the robot can access while performing tasks <br>
+	•	Includes all shelves and aisles accessible to the robot
 
-3. Workspace Definitions
-	•	Working Area: The total floor space of the warehouse, including shelves, aisles, and pathways.
-	•	Working Envelope: The 3D space that the robot can physically reach with its arms or movement.
-	•	Operation Envelope: The practical zone within the working envelope where the robot can safely and effectively perform tasks.
-	•	Dead Zone: Areas inside the warehouse that the robot cannot reach due to physical limitations or obstacles (e.g., blind spots, corners).
+3.	**Define the Operation Envelope :** <br> 
+	•	The operation envelope is the range of the robotic arm during handling operations <br>
+	•	Must cover full shelf heights and floor-level loading zones
 
-⸻
+4.	**Identify Dead Zones :** <br> 
+	•	Areas the robot cannot reach due to design or dimensional constraints <br>
+	•	Example: tight corners, under fixed equipment, or above certain heights
 
-4. Robot Design
-	•	Base: Mobile wheeled platform for navigating warehouse aisles.
-	•	Manipulator Arm: 6-DOF robotic arm mounted on top of the base.
-	•	End Effector: Adaptive gripper to handle boxes and packages.
-	•	Sensors: LIDAR + Camera for navigation and obstacle detection.
-	•	Controller: Embedded microcontroller (e.g., Arduino + ROS integration).
-	•	Power Supply: Rechargeable battery pack.
+5.	**Design Robot Movement & Tasks :** <br> 
+	•	Navigate the robot between storage and receiving locations <br>
+	•	Use sensors to avoid collisions and locate shelves accurately <br>
+    •	Robotic arm lifts, transports, and places products in their locations
 
-⸻
+6.	**Define Shape & Dimensions :** <br> 
+	•	Low and wide base for stability <br>
+	•	Robotic arm capable of movement in three directions (X, Y, Z) <br>
+    •	Wheels or guided track depending on warehouse layout
+  	
+---  	
+## Robot Design
+	•	Base: Equipped with wheels or track system for movement.
+	•	Robotic Arm: For lifting and placing products.
+	•	Sensors: For collision avoidance and accurate positioning.
+	•	Control System: To control movements and execute tasks.
+	•	Power Supply: Rechargeable battery or fixed power source.
+	•	Communication Module: To communicate with warehouse management system.
 
-5. Working & Operation Envelopes
+## Working Envelope & Dead Zones
 
-Hierarchical Diagram
-
-flowchart TD
-    A[Warehouse Floor (Working Area)] --> B[Robot Reachable Space (Working Envelope)]
-    B --> C[Effective Task Zone (Operation Envelope)]
-    A -.-> D[Unreachable Corners / Blocked Shelves (Dead Zone)]
-
-Nested Circles Visualization
-
-graph TD
-    A((Working Area))
-    B((Working Envelope))
-    C((Operation Envelope))
-    D((Dead Zone))
-
-    A --> B
-    B --> C
-    A -.-> D
+**Working Envelope:** Entire warehouse area accessible for robot movement and product handling<br>
+**Operation Envelope:** Space covered by the robotic arm while working on shelves, including vertical and horizontal reach<br>
+**Dead Zone:** Areas under or behind obstacles, tight corners, or heights unreachable by the arm
+   
 
 
-⸻
 
-6. Robot Shape (Conceptual Design)
 
-graph TD
-    A[Mobile Base] --> B[Robotic Arm]
-    B --> C[End Effector (Gripper)]
-    A --> D[Sensors: LIDAR + Camera]
-    A --> E[Battery & Controller]
+
+
+
+
 
 
