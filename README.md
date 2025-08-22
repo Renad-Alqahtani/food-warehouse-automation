@@ -26,7 +26,7 @@ Start
 End
 
 
-⸻
+---
 
 3. Workspace Definitions
 	•	Working Area: The total floor space of the warehouse, including shelves, aisles, and pathways.
